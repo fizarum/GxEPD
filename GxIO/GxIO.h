@@ -5,8 +5,6 @@
 #ifndef _GxIO_H_
 #define _GxIO_H_
 
-#include <Arduino.h>
-
 class GxIO
 {
   public:

@@ -3,6 +3,7 @@
 // License: GNU GENERAL PUBLIC LICENSE V3, see LICENSE
 
 #include "GxIO.h"
+#include <Arduino.h>
 
 uint8_t GxIO::transferTransaction(uint8_t d)
 {
