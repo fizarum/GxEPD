@@ -56,28 +56,23 @@ class GxEPD : public GxFont_GFX
     // to buffer, may be cropped, drawPixel() used, update needed, subclass may support some modes
     virtual void drawBitmap(const uint8_t *bitmap, uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint16_t color, int16_t m = bm_normal) = 0;
     // to buffer, may be cropped, drawPixel() used, update needed, subclass may support some modes, default for example bitmaps
-    virtual void drawExampleBitmap(const uint8_t *bitmap, uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint16_t color, int16_t m = bm_default)
-    {
-      drawBitmap(bitmap, x, y, w, h, color, m);
-    };
+    virtual void drawExampleBitmap(const uint8_t *bitmap, uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint16_t color, int16_t m = bm_default);
+
     // monochrome or 4 gray or other to full screen, filled with white if size is less, no update needed
-    virtual void drawPicture(const uint8_t *picture, uint32_t size) // b/w or grey is class specific
-    {
-      drawBitmap(picture, size); // default is monochrome
-    };
+    virtual void drawPicture(const uint8_t *picture, uint32_t size); // b/w or grey is class specific
+
     // to full screen, filled with white if size is less, no update needed, black  /white / red, for example bitmaps
     virtual void drawExamplePicture(const uint8_t* black_bitmap, const uint8_t* red_bitmap, uint32_t black_size, uint32_t red_size){};
     // to full screen, filled with white if size is less, no update needed, black  /white / red, general version
     virtual void drawPicture(const uint8_t* black_bitmap, const uint8_t* red_bitmap, uint32_t black_size, uint32_t red_size, int16_t mode = bm_normal){};
     // monochrome to full screen, filled with white if size is less, no update needed
     virtual void drawBitmap(const uint8_t *bitmap, uint32_t size, int16_t m = bm_normal) = 0; // monochrome
-    virtual void drawExampleBitmap(const uint8_t *bitmap, uint32_t size, int16_t m = bm_default) // monochrome
-    {
-      drawBitmap(bitmap, size, m);
-    };
+    virtual void drawExampleBitmap(const uint8_t *bitmap, uint32_t size, int16_t m = bm_default); // monochrome
+    
     virtual void eraseDisplay(bool using_partial_update = false) {};
     // partial update of rectangle from buffer to screen, does not power off
     virtual void updateWindow(uint16_t x, uint16_t y, uint16_t w, uint16_t h, bool using_rotation = true) {};
+  
   protected:
     void drawBitmapBM(const uint8_t *bitmap, uint16_t x, uint16_t y, uint16_t w, uint16_t h, uint16_t color, int16_t m);
     static inline uint16_t gx_uint16_min(uint16_t a, uint16_t b) {return (a < b ? a : b);};

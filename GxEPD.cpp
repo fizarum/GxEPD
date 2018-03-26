@@ -81,4 +81,18 @@ void  GxEPD::drawBitmapBM(const uint8_t *bitmap, uint16_t x, uint16_t y, uint16_
   }
 }
 
+void GxEPD::drawExampleBitmap(const uint8_t *bitmap, uint16_t x, uint16_t y, uint16_t w, uint16_t h,
+  uint16_t color, int16_t m) {
+      drawBitmap(bitmap, x, y, w, h, color, m);
+};
+
+// b/w or grey is class specific
+void GxEPD::drawPicture(const uint8_t *picture, uint32_t size) {
+      drawBitmap(picture, size); // default is monochrome
+};
+
+// monochrome
+void GxEPD::drawExampleBitmap(const uint8_t *bitmap, uint32_t size, int16_t m) {
+      drawBitmap(bitmap, size, m);
+};
 
